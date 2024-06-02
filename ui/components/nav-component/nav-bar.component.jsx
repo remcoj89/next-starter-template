@@ -1,6 +1,6 @@
 'use client';
 // React Hooks
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { usePathname } from 'next/navigation';
 
 // Styling
@@ -11,9 +11,11 @@ import Link from 'next/link';
 import BurgerMenu from '@/assets/icon-burger-menu/icon-burger-menu.component';
 
 const Navbar = () => {
-const screenWidth = window.screen.width;
 const pathname = usePathname()
 const [isMenuOpen, setIsMenuOpen] = useState(false);
+const [screenWidth, setScreenWidth] = useState(null)
+
+useEffect(() => {setScreenWidth(window.screen.width)},[])
 
 // Toggle burger menu
 const toggleBurgerMenu = () => { setIsMenuOpen(!isMenuOpen)}
